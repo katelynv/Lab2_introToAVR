@@ -16,13 +16,14 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0x00; PORTA = 0xFF;
 	DDRB = 0xFF; PORTB = 0x00;
+	DDRC = 0xFF; PORTC = 0x00;
 	unsigned char tmp1 = 0x00;
-	unsigned char tmp2 = 0x00;
-	unsigned char cntavail = 0x04;
+	// unsigned char tmp2 = 0x00;
+	unsigned char cntavail = 0x04;	
 
     /* Insert your solution below */
     while (1) {
-	// 2.2 answer
+	// 2.2 answer attempt 1
 	tmp1 = PINA & 0x0F; // check if PINA is 0000 1111 
 	if (tmp1 & 0x01) {
 		cntavail = cntavail - 1;
@@ -39,8 +40,10 @@ int main(void) {
 	if (tmp1 & 0x08) {  // checks if tmp1(PINA) is 1000
                 cntavail = cntavail - 1;
         }
+		
+	PORTC = cntavail & 0x0F; //assign PORTC to num cntavail
 	
-	PORTB = cntavail & 0x0F; //assign PORTC to num cntavail
+
 	/*
 	// 2.1 answer
 	tmp1 = PINA & 0x01; // see if PINA is 0x01
