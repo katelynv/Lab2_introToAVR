@@ -22,7 +22,7 @@ int main(void) {
     while (1) {
 	tmp1 = PINA & 0x01; // see if PINA is 0x01
 	tmp2 = PINA & 0x02; // see if PINA is 0x02
-	PORTB = !tmp2 & tmp1; // assigns PORTB with 1 if PINA1 = 0 and PINA0 = 1 
+	PORTB = ((!tmp2) & tmp1); // assigns PORTB with 1 if PINA1 = 0 and PINA0 = 1 
 	/*
 	tmpA = PINA & 0x03;
 	if (tmpA == 0x01) {
